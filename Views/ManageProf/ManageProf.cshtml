@@ -53,9 +53,9 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" required minlength="6"/>
-                <span asp-validation-for="Password" class="text-danger"></span>
+                @*<label asp-for="Password" class="control-label"></label>*@
+                <input asp-for="Password" class="form-control" required minlength="6" hidden/>
+                @*<span asp-validation-for="Password" class="text-danger"></span>*@
             </div>
 
             <br>
