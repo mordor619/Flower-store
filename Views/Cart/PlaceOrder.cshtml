@@ -1,0 +1,67 @@
+﻿@model FlowerStore.ProjModel.OrderDetail
+
+@{
+    ViewData["Title"] = "Place Order";
+}
+
+<h1>Place Order Confirmation</h1>
+
+
+<hr>
+
+<h3>Are you sure you want to place this order?</h3>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="PlaceOrder">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                
+                <input asp-for="OrderId" readonly="readonly" class="form-control" hidden/>
+                
+            </div>
+            <div class="form-group">
+                
+                <input asp-for="FlowerId" readonly="readonly" class="form-control" hidden/>
+                
+            </div>
+            <div class="form-group">
+                
+                <input asp-for="CustomerId" readonly="readonly" class="form-control" hidden/>
+                
+            </div>
+            <div class="form-group">
+                
+                <input asp-for="CartId" readonly="readonly" class="form-control" hidden/>
+                
+            </div>
+            <div class="form-group">
+                
+                <input asp-for="Totalprice" readonly="readonly" class="form-control" hidden/>
+                
+            </div>
+            <div class="form-group">
+                <label asp-for="Remark" class="control-label">Want to add a remark?</label>
+                <input asp-for="Remark" class="form-control" maxlength="49"/>
+                <span asp-validation-for="Remark" class="text-danger"></span>
+            </div>
+            <br>
+
+            @*<div class="form-group">
+                <label asp-for="PaymentStatus" class="control-label"></label>
+                <input asp-for="PaymentStatus" readonly="readonly" class="form-control" />
+                <span asp-validation-for="PaymentStatus" class="text-danger"></span>
+            </div>*@
+
+            <div class="form-group">
+                <input style="background-color: forestgreen; width: 150px; height: 50px; text-align: center; font-weight: bold;" type="submit" value="Place order" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

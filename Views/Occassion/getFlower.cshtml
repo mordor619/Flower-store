@@ -1,0 +1,68 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@model List<FlowerStore.ProjModel.Flower>
+
+
+@{
+    ViewData["Title"] = "Find flowers";
+}
+
+<style>
+
+    .card {
+        width: 250px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        border-radius: 5px; /* 5px rounded corners */
+    }
+
+    /* Add rounded corners to the top left and the top right corner of the image */
+    img {
+        border-radius: 5px 5px 0 0;
+    }
+
+    /* On mouse-over, add a deeper shadow */
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+    /* Add some padding inside the card container */
+    .container {
+        padding: 2px 16px;
+    }
+</style>
+
+
+<h1>Available flowers in this category...</h1>
+
+<br>
+<br>
+<br>
+<br>
+
+
+@foreach (var item in Model)
+{
+    <div class="card" style="margin-top: 15px;">
+        <img alt="image"
+             src="data:image/jpg;base64, @Convert.ToBase64String(item.FlImage)" height="250" width="250" />
+        <div class="container">
+
+            <h4 style="margin-top: 5px;"><b>@Html.DisplayFor(modelItem => item.Name)</b></h4>
+            <p>@Html.DisplayFor(modelItem => item.Occassion)</p>
+            <p>&#8377; @Html.DisplayFor(modelItem => item.UnitPrice)</p>
+
+
+            <a asp-controller="Flower" asp-action="AddToCart" asp-route-id="@item.Id"><button style="margin-bottom: 10px;">Add to Cart</button></a>
+
+        </div>
+    </div>
+    <br>
+    <br>
+}
+

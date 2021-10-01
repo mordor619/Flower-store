@@ -1,0 +1,20 @@
+﻿@model FlowerStore.ProjModel.Cart
+
+@{
+    ViewData["Title"] = "Remove from Cart";
+}
+
+
+<h1>Remove cart confirmation...</h1>
+<br><br><br>
+
+<h3>Are you sure you want to delete this item from cart?</h3>
+<div>
+    
+    <hr />
+    
+    <form asp-controller="Cart" asp-action="RemoveFromCartNow">
+        <input asp-for="CartId" value="@Model.CartId" type="number" hidden>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+</div>

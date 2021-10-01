@@ -1,0 +1,265 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@{
+    ViewData["Title"] = "Register Page";
+}
+
+@model FlowerStore.ProjModel.Customer
+
+
+<style>
+
+    body {
+        background: #ffdead;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    form {
+        width: 60%;
+        margin: 60px auto;
+        background: #fff;
+        padding: 60px 20px 80px 20px;
+        text-align: center;
+        -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+        box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+    }
+
+    label {
+        display: block;
+        position: relative;
+        margin: 40px 0px;
+    }
+
+    .label-txt {
+        position: absolute;
+        top: -1.6em;
+        padding: 10px;
+        font-family: sans-serif;
+        font-size: .8em;
+        letter-spacing: 1px;
+        color: #6C6C6C;
+        transition: ease .3s;
+    }
+
+    .input {
+        width: 100%;
+        padding: 10px;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #000;
+    }
+
+    .line-box {
+        position: relative;
+        width: 100%;
+        height: 2px;
+        background: #0DB8DE;
+    }
+
+    .line {
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        top: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #8BC34A;
+        transition: ease .6s;
+    }
+
+    .input:focus + .line-box .line {
+        width: 100%;
+    }
+
+    .label-active {
+        top: -3em;
+    }
+
+    .login-key {
+        height: 100px;
+        font-size: 80px;
+        line-height: 100px;
+        background: -webkit-linear-gradient(#27EF9F, #0DB8DE);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    #imgloginlogo {
+        height: 100px;
+        width: 150px;
+    }
+
+    .login-title {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 30px;
+        letter-spacing: 2px;
+        margin-top: 15px;
+        font-weight: bold;
+        color: #ECF0F5;
+    }
+
+    .login-btm {
+        margin-left: 140px;
+        margin-right: 130px;
+    }
+
+    .login-button {
+        padding-right: 0px;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .btn-outline-primary {
+        border-color: #0DB8DE;
+        color: #0DB8DE;
+        border-radius: 0px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+    #btnReg {
+        border: 1px solid #0DB8DE;
+        font-weight: 700;
+        color: #0DB8DE;
+        border-radius: 0px;
+    }
+
+        #btnReg:hover {
+            background-color: #0DB8DE;
+            color: #ffffff;
+        }
+
+    .login-text {
+        margin-left: 120px;
+        text-align: center;
+        padding-left: 0px;
+        color: #CD5C5C;
+    }
+
+    #headtext {
+        color: black;
+    }
+
+    input[type=radio] {
+        border: 0px;
+        width: 8%;
+        height: 1.5em;
+    }
+
+    #lb1 {
+        display: inline-block;
+        position: initial;
+        vertical-align: middle;
+        color: black;
+        font-size: 25px;
+        margin: 0px 0px 15px;
+    }
+
+    #rdbDiv {
+        margin: 10px 30px 40px;
+    }
+
+</style>
+
+
+
+
+<form asp-controller="Register" asp-action="Register">
+
+    <div class="col-lg-12 login-key">
+        <img src="~/image/loginlogo.jpg" id="imgloginlogo">
+        <br>
+    </div>
+    <div id="headtext" class="col-lg-12 login-title">
+        REGISTERATION PANEL
+    </div>
+    <br><br>
+
+
+    <label>
+        <p class="label-txt">ENTER YOUR FULL NAME</p>
+        <input type="text" class="input" asp-for="Name" required maxlength="49">
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
+
+    <br><br>
+
+    <label>
+        <p class="label-txt">ENTER YOUR EMAIL</p>
+        <input type="email" class="input" asp-for="Email" required maxlength="100">
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
+
+    <br><br>
+
+    <label>
+        <p class="label-txt">ENTER YOUR PASSWORD</p>
+        <input type="password" class="input" asp-for="Password" required minlength="6">
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
+
+    <br><br>
+
+    <label>
+        <p class="label-txt">ENTER YOUR PHONE</p>
+        <input type="number" class="input" maxlength="10" asp-for="Phone" required>
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
+
+    <br><br>
+
+    <label>
+        <p class="label-txt">ENTER YOUR ADDRESS</p>
+        <input type="text" class="input" asp-for="Address" required maxlength="200">
+        <div class="line-box">
+            <div class="line"></div>
+        </div>
+    </label>
+
+    <br><br>
+
+        <div id="rdbDiv">
+            <input type="radio" value="User" asp-for="Vendor" checked>
+            <label id="lb1">User</label>
+
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+
+            <input type="radio" value="Admin" asp-for="Vendor">
+            <label id="lb1">Vendor</label>
+        </div>
+
+    <br><br>
+
+    <div class="col-lg-6 login-btm login-text">
+
+        @if (ViewBag.errorReg != null)
+        {
+            <p>@ViewBag.errorReg</p>
+        }
+
+    </div>
+
+    <br>
+    <div class="col-lg-6 login-btm login-button">
+        <button id="btnReg" type="submit" class="btn btn-outline-primary">REGISTER</button>
+    </div>
+
+   
+
+</form>
+

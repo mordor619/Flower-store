@@ -1,0 +1,51 @@
+﻿@model FlowerStore.ProjModel.Cart
+
+@{
+    ViewData["Title"] = "Cart";
+}
+
+
+<br><br>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+
+        <form asp-action="AddToCart">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="CustomerId" class="form-control" hidden/>
+            <input value="@ViewBag.fid" asp-for="FlowerId" class="form-control" hidden/>
+
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" required max="10"/>
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <label asp-for="ItemPrice" class="control-label">Unit price</label>
+                <input asp-for="ItemPrice" readonly="readonly" class="form-control" />
+                <span asp-validation-for="ItemPrice" class="text-danger"></span>
+            </div>
+
+            <br><br>
+
+            <div class="form-group">
+                <input style="background-color: forestgreen; width: 100px; height: 50px; text-align: center; font-weight: bold;" type="submit" value="Add" class="btn btn-primary" />
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<hr />
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

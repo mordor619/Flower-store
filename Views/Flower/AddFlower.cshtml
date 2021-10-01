@@ -1,0 +1,78 @@
+﻿@model FlowerStore.ProjModel.Flower
+
+@{
+    ViewData["Title"] = "Add flower";
+}
+
+<h1>Add a new Flower</h1>
+
+<hr />
+<br>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddFlower">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @*<div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>*@
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" required maxlength="15"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Occassion" class="control-label"></label>
+
+                <select id="sel1" name="category" class="form-control" required>
+                    <option value="0" disabled selected>Choose Category</option>
+                    @foreach (var category in ViewBag.occList)
+                    {
+                        // loop through each product
+                        <option value="@category.OccDetails">@category.OccDetails</option>
+                    }
+
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UnitPrice" class="control-label">Unit price</label>
+                <input type="number" asp-for="UnitPrice" class="form-control" required/>
+                <span asp-validation-for="UnitPrice" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AvailableQuantity" class="control-label">Quantity</label>
+                <input type="number" asp-for="AvailableQuantity" class="form-control" required/>
+                <span asp-validation-for="AvailableQuantity" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FlImage" class="control-label">Upload Image(500x500)</label>
+                <input type="file" name="floImg" asp-for="FlImage" class="form-control" accept="image/*" required>       
+                <span asp-validation-for="FlImage" class="text-danger"></span>
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <input style="background-color: forestgreen; width: 100px; height: 50px; text-align: center; font-weight: bold;" type="submit" value="Add" class="btn btn-primary" />
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
